@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cigjr86g4ipbk"]
+[gd_scene load_steps=10 format=3 uid="uid://cigjr86g4ipbk"]
 
 [ext_resource type="Script" path="res://Scripts/rock.gd" id="1_ofql2"]
 [ext_resource type="Texture2D" uid="uid://dd0c6eiruhvc6" path="res://Assets/Imagenes/Personajes/Roca.png" id="2_8wb7g"]
+[ext_resource type="AudioStream" uid="uid://b4c81qp5ruiqe" path="res://Assets/Sonido/Explosion.ogg" id="3_a0opm"]
 [ext_resource type="Texture2D" uid="uid://kjlbo7jmtdne" path="res://Assets/Imagenes/Personajes/Explosion.png" id="3_vmphb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_35pli"]
@@ -203,7 +204,12 @@ position = Vector2(0, -0.5)
 scale = Vector2(3.07, 3.07)
 shape = SubResource("CircleShape2D_35pli")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="Explosion" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_a0opm")
+volume_db = -3.0
+pitch_scale = 0.5
+attenuation = 2.46
+bus = &"SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

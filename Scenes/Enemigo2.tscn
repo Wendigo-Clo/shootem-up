@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cde7pualm2p4b"]
+[gd_scene load_steps=9 format=3 uid="uid://cde7pualm2p4b"]
 
 [ext_resource type="Script" path="res://Scripts/enemy_ufo_1.gd" id="1_87v1h"]
 [ext_resource type="Texture2D" uid="uid://drx5uypec2da6" path="res://Assets/Imagenes/Personajes/UFO.png" id="2_8i8na"]
 [ext_resource type="Texture2D" uid="uid://kjlbo7jmtdne" path="res://Assets/Imagenes/Personajes/Explosion.png" id="3_otscf"]
+[ext_resource type="AudioStream" uid="uid://b4c81qp5ruiqe" path="res://Assets/Sonido/Explosion.ogg" id="4_4g47c"]
 
 [sub_resource type="Animation" id="Animation_ov2pw"]
 resource_name = "Explotion"
@@ -164,6 +165,12 @@ frame = 9
 polygon = PackedVector2Array(-97, 7, -26, 25, 26, 26, 99, 6, 100, 0, -1, -25, -99, 0)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="Explosion" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_4g47c")
+volume_db = -3.0
+pitch_scale = 0.7
+bus = &"SFX"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

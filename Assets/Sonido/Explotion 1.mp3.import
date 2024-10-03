@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b61eoa3h8cac3"
+path="res://.godot/imported/Explotion 1.mp3-f6ef93d00096d0381209e83546d015e5.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sonido/Explotion 1.mp3"
+dest_files=["res://.godot/imported/Explotion 1.mp3-f6ef93d00096d0381209e83546d015e5.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

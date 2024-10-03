@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7tt3635mr75w"]
+
+[ext_resource type="Script" path="res://Scripts/spawn_pwr.gd" id="1_8hvb7"]
+
+[node name="Spawn_Pwr" type="Marker2D"]
+position = Vector2(696, -80)
+script = ExtResource("1_8hvb7")

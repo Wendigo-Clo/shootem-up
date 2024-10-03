@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b6qmkjtuo84wa"]
+[gd_scene load_steps=3 format=3 uid="uid://b6qmkjtuo84wa"]
 
 [ext_resource type="Script" path="res://Scripts/nodo_timer.gd" id="1_sb41t"]
+[ext_resource type="FontFile" uid="uid://c3l0xqydfr5do" path="res://Assets/Font/Nasa.ttf" id="2_kfwer"]
 
 [node name="NodoTimer" type="Control"]
 layout_mode = 3
@@ -14,12 +15,13 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 834.0
-offset_top = 30.0
-offset_right = 998.0
-offset_bottom = 72.0
+offset_left = 835.0
+offset_top = 35.0
+offset_right = 1055.0
+offset_bottom = 77.0
 grow_horizontal = 0
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("2_kfwer")
+theme_override_font_sizes/font_size = 42
 text = "Time: 00:00"
 
 [node name="Timer" type="Timer" parent="."]

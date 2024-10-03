@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/laser.gd" id="1_bv0vl"]
 [ext_resource type="Texture2D" uid="uid://byfb8uw3u2uq2" path="res://Assets/Imagenes/Personajes/Rayo.png" id="1_t7f2g"]
-[ext_resource type="AudioStream" uid="uid://hcxe4wug1ofd" path="res://Assets/Laser.ogg" id="3_7xh8n"]
+[ext_resource type="AudioStream" uid="uid://hcxe4wug1ofd" path="res://Assets/Sonido/Laser.ogg" id="3_7xh8n"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1sh1r"]
 radius = 2.0
@@ -25,9 +25,12 @@ scale = Vector2(0.2, 1.1)
 position = Vector2(0, -0.5)
 shape = SubResource("CapsuleShape2D_1sh1r")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." groups=["Laser"]]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_7xh8n")
-volume_db = -0.02
+volume_db = -10.0
+autoplay = true
+attenuation = 1.74
+bus = &"SFX"
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

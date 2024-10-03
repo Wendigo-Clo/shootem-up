@@ -11,11 +11,12 @@ pass
 
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("Laser") or area.is_in_group("nave"):
-		Global.score += 50
+		Global.score += 100
 		mass = 0.1
 		$AnimationPlayer.play("Explotion")
+		$Explosion.play()
 		await get_tree().create_timer(1).timeout
-		$Area2D/CollisionShape2D.disabled = true
+		$Area2D/CollisionShape2D.disabled = true	
 		queue_free()
 	pass # Replace with function body.
 

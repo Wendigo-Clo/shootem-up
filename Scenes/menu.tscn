@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://debbp5h345kq7"]
+[gd_scene load_steps=8 format=3 uid="uid://debbp5h345kq7"]
 
 [ext_resource type="Script" path="res://Scripts/menu.gd" id="1_r1iq8"]
 [ext_resource type="Texture2D" uid="uid://dr3ru60xxpcg4" path="res://Assets/Imagenes/MenuPrincipal/Menu Asteroides 1.jpg" id="2_tbhwb"]
+[ext_resource type="FontFile" uid="uid://c3l0xqydfr5do" path="res://Assets/Font/Nasa.ttf" id="3_elgu1"]
 [ext_resource type="PackedScene" uid="uid://bk2yfox4su8ig" path="res://Scenes/transition_control.tscn" id="3_fyxrp"]
+[ext_resource type="AudioStream" uid="uid://b0ql88kn7k8cs" path="res://Assets/Sonido/Menu Loop.ogg" id="5_y17gv"]
+[ext_resource type="AudioStream" uid="uid://badcej00r47xx" path="res://Assets/Sonido/Hover.ogg" id="6_d6n11"]
+[ext_resource type="AudioStream" uid="uid://bgme1hqmwlsrx" path="res://Assets/Sonido/Click1.ogg" id="7_3j3xe"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -22,11 +26,15 @@ texture = ExtResource("2_tbhwb")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_direction = 1
-layout_mode = 0
-offset_left = 505.0
-offset_top = 319.0
-offset_right = 618.0
-offset_bottom = 394.0
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.6
+anchor_right = 0.5
+anchor_bottom = 0.6
+offset_left = 500.0
+offset_top = 256.0
+offset_right = 613.0
+offset_bottom = 404.0
 scale = Vector2(1.2, 1.2)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
@@ -34,10 +42,26 @@ layout_mode = 2
 
 [node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_elgu1")
+theme_override_font_sizes/font_size = 28
 text = "Play"
+
+[node name="Options" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_elgu1")
+theme_override_font_sizes/font_size = 28
+text = "Options"
+
+[node name="Credits" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_elgu1")
+theme_override_font_sizes/font_size = 28
+text = "Credits"
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_elgu1")
+theme_override_font_sizes/font_size = 28
 text = "Quit
 "
 
@@ -48,10 +72,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 346.0
-offset_top = 186.0
-offset_right = 766.0
-offset_bottom = 256.0
+offset_left = 220.0
+offset_top = 122.0
+offset_right = 904.0
+offset_bottom = 232.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 0)
@@ -62,17 +86,42 @@ theme_override_constants/shadow_offset_x = -3
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 4
 theme_override_constants/shadow_outline_size = 3
-theme_override_font_sizes/font_size = 67
+theme_override_fonts/font = ExtResource("3_elgu1")
+theme_override_font_sizes/font_size = 80
 text = "Space Dementia"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TransitionControl" parent="." instance=ExtResource("3_fyxrp")]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 28.8
 anchor_bottom = 16.25
 offset_bottom = 0.0
 
+[node name="MusicaMenu" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_y17gv")
+volume_db = 3.0
+autoplay = true
+bus = &"Music"
+
+[node name="Hover" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_d6n11")
+volume_db = 5.0
+bus = &"SFX"
+
+[node name="Click" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_3j3xe")
+volume_db = 2.0
+pitch_scale = 0.9
+bus = &"SFX"
+
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_mouse_entered"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_mouse_entered"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Credits" to="." method="_on_credits_mouse_entered"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_mouse_entered"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

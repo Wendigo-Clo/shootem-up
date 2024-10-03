@@ -21,7 +21,7 @@ func _process(_delta: float) -> void: #Aca modifica los datos del tiempo por fot
 	
 	
 func _on_timer_timeout() -> void: #cambio de escena
-	$"../TransitionControl".visible = true
+	get_parent().add_child(preload("res://Scenes/transition_control.tscn").instantiate())
 	$"../TransitionControl/AnimationPlayer".play_backwards("screen_transition")
 	await $"../TransitionControl/AnimationPlayer".animation_finished
 	get_tree().change_scene_to_file(siguienteEscena)

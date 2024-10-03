@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c18psk2vuvghw"]
+[gd_scene load_steps=3 format=3 uid="uid://c18psk2vuvghw"]
 
 [ext_resource type="Script" path="res://Scripts/score_label.gd" id="1_itvqm"]
+[ext_resource type="FontFile" uid="uid://c3l0xqydfr5do" path="res://Assets/Font/Nasa.ttf" id="1_lggib"]
 
 [node name="Score" type="Node"]
 
@@ -9,5 +10,7 @@ offset_left = 40.0
 offset_top = 25.0
 offset_right = 92.0
 offset_bottom = 48.0
+theme_override_fonts/font = ExtResource("1_lggib")
+theme_override_font_sizes/font_size = 42
 text = "SCORE: "
 script = ExtResource("1_itvqm")

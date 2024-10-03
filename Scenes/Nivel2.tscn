@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bx0ygjj7l0y7r"]
+[gd_scene load_steps=6 format=3 uid="uid://bx0ygjj7l0y7r"]
 
 [ext_resource type="Script" path="res://Scripts/Nivel2.gd" id="1_gd3km"]
 [ext_resource type="PackedScene" uid="uid://b448qcmy7bpr" path="res://Scenes/pausa_game_over.tscn" id="2_0nd22"]
 [ext_resource type="PackedScene" uid="uid://bnv1hyx82tw5t" path="res://Scenes/fondo.tscn" id="3_hs0og"]
 [ext_resource type="Texture2D" uid="uid://dc0a2p2y4rkkq" path="res://Assets/Imagenes/Fondo/Nebula Blue.png" id="4_mfh0n"]
+[ext_resource type="AudioStream" uid="uid://dealxoo7np4sg" path="res://Assets/Sonido/Gameplay Loop Level 2.ogg" id="5_lj8u4"]
 
 [node name="Nivel2" type="Node2D"]
 script = ExtResource("1_gd3km")
@@ -15,6 +16,11 @@ scale = Vector2(1.003, 1.003)
 texture = ExtResource("4_mfh0n")
 
 [node name="Pausa-GameOver" parent="." instance=ExtResource("2_0nd22")]
+
+[node name="MusicaNivel2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_lj8u4")
+volume_db = 6.0
+autoplay = true
 
 [connection signal="jugar" from="Pausa-GameOver" to="." method="_on_pausa_game_over_jugar"]
 [connection signal="rejugar" from="Pausa-GameOver" to="." method="_on_pausa_game_over_rejugar"]

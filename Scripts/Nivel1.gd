@@ -7,23 +7,26 @@ func _ready():
 	get_tree().paused = false
 	#presentacion de nivel (hacer modulo)
 	$"Pausa-GameOver".visible = true
-	$"Pausa-GameOver"/ColorRect/GameOver.text = "Nivel 1"
+	$"Pausa-GameOver"/ColorRect/GameOver.text = "NIVEL 1"
 	$"Pausa-GameOver"/ColorRect/GameOver.visible = true
 	$"Pausa-GameOver"/ColorRect/VBoxContainer.visible = false
 	#Transicion (hacer modulo)
 	add_child(preload("res://Scenes/transition_control.tscn").instantiate())
 	$TransitionControl/AnimationPlayer.play("screen_transition")
 	await $TransitionControl/AnimationPlayer.animation_finished
-	$"TransitionControl".visible=true 
+	$"TransitionControl".queue_free()
 	
 	#Instancio la nave y los laterales
 	add_child(preload("res://Scenes/nave.tscn").instantiate())
 	add_child(preload("res://Scenes/laterales.tscn").instantiate())
 	
-	 #Pauso para presentacion
-	await get_tree().create_timer(5).timeout
+	#Instancio las vidas
+	add_child(preload("res://Scenes/vidas.tscn").instantiate())
 	#Instancio el score
 	add_child(preload("res://Scenes/score.tscn").instantiate())
+	
+	 #Pauso para presentacion
+	await get_tree().create_timer(5).timeout
 	#instancio el timer y le defino el cambio de escena
 	var NodoTiempo = preload("res://Scenes/nodo_timer.tscn").instantiate()
 	add_child(NodoTiempo)
@@ -32,6 +35,9 @@ func _ready():
 	#que no se vea el menu y instancio el score en 0
 	$"Pausa-GameOver".visible = false
 	Global.score = 0
+	
+	#Instancio spawns de powerup
+	add_child(preload("res://Scenes/spawn_pwr.tscn").instantiate())
 	
 	#Instancio enemigo
 	add_child(preload("res://Scenes/spawn_enemigo1.tscn").instantiate())
@@ -62,7 +68,7 @@ pass
 func _on_pausa_game_over_jugar() -> void: #funcion jugar de boton
 	get_tree().paused = false
 	$"Pausa-GameOver".visible = false
-	$"Pausa-GameOver"/ColorRect/GameOver.text = "Pausa!"
+	$"Pausa-GameOver"/ColorRect/GameOver.text = "PAUSA!"
 	pass # Replace with function body.
 
 
@@ -70,6 +76,7 @@ func _on_pausa_game_over_rejugar() -> void: #funcion re jugar
 	Global.naveDestruida = false
 	Global.rejugar = false
 	Global.score = 0
+	Global.vidas = 3
 	get_tree().reload_current_scene()
 	#Global.rejugar = false   #Si dejo esta linea, va a volver a abrir el menu al comienzo.
 	pass # Replace with function body.

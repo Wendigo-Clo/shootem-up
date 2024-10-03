@@ -24,11 +24,5 @@ func _input(event: InputEvent) -> void:
 		$ColorRect/VBoxContainer.visible=true
 		get_tree().paused = not get_tree().paused
 		visible = get_tree().paused
+		Global.menuPausa = get_tree().paused
 pass
-
-'''
-func _input(event: InputEvent) -> void: #Para que pause
-	if event.is_action_pressed("ui_cancel"):
-		get_tree().paused = not get_tree().paused
-		visible = get_tree().paused
-'''

@@ -7,7 +7,7 @@ var player_position = Vector2.ZERO
 #var nave_node = get_node("/root/Scenes/nave.tscn")
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	gravity_scale = 0.1 
 	rotation_degrees = 0
 	
@@ -27,6 +27,7 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Laser") or area.is_in_group("nave"):
 		Global.score += 300
 		$AnimationPlayer.play("Explosion")
+		$Explosion.play()
 		await get_tree().create_timer(1).timeout
 		queue_free()
 	pass 

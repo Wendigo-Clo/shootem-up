@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dbiesyoblmnx0"
+path="res://.godot/imported/Gameplay Loop 3.ogg-ab4688e31f793a3df3730fd9b7729851.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sonido/Gameplay Loop 3.ogg"
+dest_files=["res://.godot/imported/Gameplay Loop 3.ogg-ab4688e31f793a3df3730fd9b7729851.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,52 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bhv0a84bjkxby"]
+[gd_scene load_steps=2 format=3 uid="uid://bhv0a84bjkxby"]
 
 [ext_resource type="Script" path="res://Scripts/spawnEnemigo1.gd" id="1_nb8yj"]
 
-[sub_resource type="Animation" id="Animation_hgbug"]
-resource_name = "Movimiento"
-length = 6.0
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2, 4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(50, -30), Vector2(1100, -30), Vector2(720, -30)]
-}
-
-[sub_resource type="Animation" id="Animation_aexcn"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -10)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_vyn1v"]
-_data = {
-"Movimiento": SubResource("Animation_hgbug"),
-"RESET": SubResource("Animation_aexcn")
-}
-
 [node name="SpawnEnemigo1" type="Marker2D"]
-position = Vector2(0, -10)
+position = Vector2(50, -30)
 script = ExtResource("1_nb8yj")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_vyn1v")
-}
-autoplay = "Movimiento"
