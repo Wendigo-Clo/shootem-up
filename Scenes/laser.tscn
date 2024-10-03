@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://5je1utrlh5pw"]
+
+[ext_resource type="Script" path="res://Scripts/laser.gd" id="1_bv0vl"]
+[ext_resource type="Texture2D" uid="uid://byfb8uw3u2uq2" path="res://Assets/Imagenes/Personajes/Rayo.png" id="1_t7f2g"]
+[ext_resource type="AudioStream" uid="uid://hcxe4wug1ofd" path="res://Assets/Laser.ogg" id="3_7xh8n"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1sh1r"]
+radius = 2.0
+height = 25.0
+
+[node name="Laser" type="CharacterBody2D"]
+script = ExtResource("1_bv0vl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_t7f2g")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(4.76837e-07, -1)
+scale = Vector2(0.2, 1.1)
+
+[node name="Area2D" type="Area2D" parent="." groups=["Laser"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("CapsuleShape2D_1sh1r")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." groups=["Laser"]]
+stream = ExtResource("3_7xh8n")
+volume_db = -0.02
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

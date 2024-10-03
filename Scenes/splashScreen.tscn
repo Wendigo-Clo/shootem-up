@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://1jskn4spb7qf"]
+
+[ext_resource type="Script" path="res://Scripts/splashScreen.gd" id="1_1pvxo"]
+[ext_resource type="Texture2D" uid="uid://dv5bl4oc0fy0e" path="res://Assets/Imagenes/Stone Logo/Stone.png" id="2_jm6ea"]
+[ext_resource type="PackedScene" uid="uid://bk2yfox4su8ig" path="res://Scenes/transition_control.tscn" id="2_w5qv3"]
+
+[node name="SplashScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_1pvxo")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 28.816
+anchor_bottom = 16.114
+offset_left = -128.0
+offset_top = -10.0
+offset_right = 92.3599
+offset_bottom = 16.44
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_jm6ea")
+expand_mode = 1
+
+[node name="TransitionControl" parent="." instance=ExtResource("2_w5qv3")]
+visible = false
+layout_mode = 1

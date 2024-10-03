@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://e7mtikmgsru4"]
+
+[ext_resource type="PackedScene" uid="uid://c64ouv5phj5ef" path="res://Scenes/nave.tscn" id="1_8b72f"]
+[ext_resource type="PackedScene" uid="uid://cptgvi7bn28ae" path="res://Scenes/spawn_enemigo2.tscn" id="2_0g714"]
+[ext_resource type="PackedScene" uid="uid://cde7pualm2p4b" path="res://Scenes/Enemigo2.tscn" id="3_4xofk"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Nave" parent="." instance=ExtResource("1_8b72f")]
+
+[node name="Spawn_Ufo1" parent="." instance=ExtResource("2_0g714")]
+visible = false
+position = Vector2(730, 20)
+
+[node name="EnemyUfo1" parent="." instance=ExtResource("3_4xofk")]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://c64ouv5phj5ef"]
+
+[ext_resource type="Script" path="res://Scripts/nave.gd" id="1_ll5c8"]
+[ext_resource type="Texture2D" uid="uid://dlqcynxolm3ym" path="res://Assets/Imagenes/Personajes/Nave.png" id="2_bxwjb"]
+
+[node name="Nave" type="CharacterBody2D" groups=["nave"]]
+position = Vector2(606, 580)
+rotation = -0.0872665
+script = ExtResource("1_ll5c8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_bxwjb")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-14.7443, -49.4733, 2.11609, -70.0822, 15.0544, -45.8624, 20.0363, 34.879, -5.74011, 42.6621, -34.4929, 27.0969)
+
+[node name="Area2D" type="Area2D" parent="." groups=["nave"]]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-14.7443, -49.4733, 2.11609, -70.0822, 15.0544, -45.8624, 20.0363, 34.879, -5.74011, 42.6621, -34.4929, 27.0969)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

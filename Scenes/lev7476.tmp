@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://bx0ygjj7l0y7r"]
+
+[ext_resource type="Script" path="res://Scripts/level_2.gd" id="1_8llwg"]
+[ext_resource type="PackedScene" uid="uid://bhv0a84bjkxby" path="res://Scenes/spawn_rock.tscn" id="1_whsfj"]
+[ext_resource type="PackedScene" uid="uid://b448qcmy7bpr" path="res://Scenes/pausa_game_over.tscn" id="2_yknq4"]
+[ext_resource type="PackedScene" uid="uid://bnv1hyx82tw5t" path="res://Scenes/fondo.tscn" id="3_psu82"]
+[ext_resource type="Texture2D" uid="uid://dc0a2p2y4rkkq" path="res://Assets/Imagenes/Fondo/Nebula Blue.png" id="4_iixko"]
+
+[node name="Level2" type="Node2D"]
+script = ExtResource("1_8llwg")
+
+[node name="SpawnRock" parent="." instance=ExtResource("1_whsfj")]
+
+[node name="Pausa-GameOver" parent="." instance=ExtResource("2_yknq4")]
+
+[node name="Fondo" parent="." instance=ExtResource("3_psu82")]
+
+[node name="ParallaxLayer" parent="Fondo" index="0"]
+motion_mirroring = Vector2(0, 4095.67)
+
+[node name="Sprite2D" parent="Fondo/ParallaxLayer" index="0"]
+texture = ExtResource("4_iixko")
+
+[editable path="Fondo"]

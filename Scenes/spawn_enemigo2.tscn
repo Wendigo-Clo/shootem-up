@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cptgvi7bn28ae"]
+
+[ext_resource type="Script" path="res://Scripts/spawnEnemigo2.gd" id="1_ptiud"]
+
+[node name="SpawnEnemigo2" type="Marker2D"]
+position = Vector2(730, -50)
+script = ExtResource("1_ptiud")

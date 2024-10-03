@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bx0ygjj7l0y7r"]
+
+[ext_resource type="Script" path="res://Scripts/level_2.gd" id="1_gd3km"]
+[ext_resource type="PackedScene" uid="uid://b448qcmy7bpr" path="res://Scenes/pausa_game_over.tscn" id="2_0nd22"]
+[ext_resource type="PackedScene" uid="uid://bnv1hyx82tw5t" path="res://Scenes/fondo.tscn" id="3_hs0og"]
+[ext_resource type="Texture2D" uid="uid://dc0a2p2y4rkkq" path="res://Assets/Imagenes/Fondo/Nebula Blue.png" id="4_mfh0n"]
+
+[node name="Nivel2" type="Node2D"]
+script = ExtResource("1_gd3km")
+
+[node name="Pausa-GameOver" parent="." instance=ExtResource("2_0nd22")]
+
+[node name="Fondo" parent="." instance=ExtResource("3_hs0og")]
+
+[node name="ParallaxLayer" parent="Fondo" index="0"]
+motion_mirroring = Vector2(0, 4095.67)
+
+[node name="Sprite2D" parent="Fondo/ParallaxLayer" index="0"]
+texture = ExtResource("4_mfh0n")
+
+[connection signal="jugar" from="Pausa-GameOver" to="." method="_on_pausa_game_over_jugar"]
+[connection signal="rejugar" from="Pausa-GameOver" to="." method="_on_pausa_game_over_rejugar"]
+[connection signal="salir" from="Pausa-GameOver" to="." method="_on_pausa_game_over_salir"]
+
+[editable path="Fondo"]
