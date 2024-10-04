@@ -50,7 +50,8 @@ func _on_area_2d_area_entered(area):
 	
 	if area.is_in_group("powerUpLife"):
 		Global.vidas +=1
-		area.queue_free() #Elimina el power-up de vida
+		
+		#area.queue_free() #Elimina el power-up de vida
 	
 	#Si entra enemigo al area
 	if area.is_in_group("Enemigo"):
@@ -60,7 +61,6 @@ func _on_area_2d_area_entered(area):
 	#Cuando las vidas llegan a 0
 	if Global.vidas == 0:
 		$AnimationPlayer.play("Explosion")
-
 		await get_tree().create_timer(1.2).timeout
 		Global.naveDestruida = true  #Permite saber cuando se pierde, importante!
 		queue_free()

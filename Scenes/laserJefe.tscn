@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/laserJefe.gd" id="1_y6rqu"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_aftpc"]
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_lpfom"]
 
 [node name="LaserJefe" type="Node2D"]
 script = ExtResource("1_y6rqu")
@@ -12,6 +12,8 @@ script = ExtResource("1_y6rqu")
 [node name="RayCast2D" type="RayCast2D" parent="."]
 
 [node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 0, 0)
+default_color = Color(0, 1, 1, 1)
 
 [node name="Area2D" type="Area2D" parent="." groups=["Enemigo"]]
 
@@ -32,7 +34,7 @@ scale_amount_max = 3.5
 color = Color(0, 1, 1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_aftpc")
+shape = SubResource("SegmentShape2D_lpfom")
 debug_color = Color(0.924944, 4.39915e-05, 0.678114, 0.42)
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

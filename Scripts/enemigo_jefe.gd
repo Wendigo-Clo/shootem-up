@@ -48,8 +48,8 @@ func MoverNave():
 	atacando=true
 	#Hacerlo transparente y teletransportarlo
 	$AnimationPlayer.play("Transparencia")
-	await get_tree().create_timer(0.2).timeout
-	$Sprite2D/Area2D/danio.disabled = true
+	await $AnimationPlayer.animation_finished
+	$Sprite2D/Area2D/Danio.disabled = true
 	if $AnimationPlayer.animation_finished:
 		while position == posActual: #Para que no respita lugar
 			position = puntoAzar(randi_range(0,2))
