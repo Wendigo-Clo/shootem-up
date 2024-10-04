@@ -1,7 +1,7 @@
 extends Node2D
 
 func _ready():
-	$Fondo.set_velocidad(3) #Que el fondo sea el del nivel 12, a su velocidad.
+	$Fondo.set_velocidad(3) #Que el fondo sea el del nivel X, y a su velocidad.
 	
 	get_tree().paused = false
 	#Transicion
@@ -12,9 +12,8 @@ func _ready():
 	add_child(preload("res://Scenes/laterales.tscn").instantiate())
 	add_child(preload("res://Scenes/nave.tscn").instantiate())
 
-	#Instancio las vidas
+	#Instancio las vidas y el score
 	add_child(preload("res://Scenes/vidas.tscn").instantiate())
-	#Instancio el score
 	add_child(preload("res://Scenes/score.tscn").instantiate())
 	
 	 #Pauso para presentacion
@@ -31,6 +30,7 @@ func _ready():
 	#Instancio spawns de powerup
 	add_child(preload("res://Scenes/spawn_pwr.tscn").instantiate())
 
+	#Instancio enemigos
 	add_child(preload("res://Scenes/spawn_enemigo1.tscn").instantiate())
 	add_child(preload("res://Scenes/spawn_enemigo2.tscn").instantiate())
 	add_child(preload("res://Scenes/spawn_enemigo_3.tscn").instantiate())

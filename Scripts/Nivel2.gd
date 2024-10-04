@@ -12,10 +12,8 @@ func _ready():
 	add_child(preload("res://Scenes/laterales.tscn").instantiate())
 	add_child(preload("res://Scenes/nave.tscn").instantiate())
 
-	#Instancio las vidas
+	#Instancio las vidas y el score
 	add_child(preload("res://Scenes/vidas.tscn").instantiate())
-	
-	#Instancio el score
 	add_child(preload("res://Scenes/score.tscn").instantiate())
 	
 	 #Pauso para presentacion
@@ -31,7 +29,8 @@ func _ready():
 		
 	#Instancio spawns de powerup
 	add_child(preload("res://Scenes/spawn_pwr.tscn").instantiate())
-
+	
+	#instancio los enemigos
 	add_child(preload("res://Scenes/spawn_enemigo1.tscn").instantiate())
 	add_child(preload("res://Scenes/spawn_enemigo2.tscn").instantiate())
 	pass
@@ -39,7 +38,7 @@ func _ready():
 
 func _process(_delta: float) -> void:
 		#$"Pausa-GameOver".visible = true 
-		if Global.naveDestruida:             #Si la nave fue destruida, perdiste!
+		if Global.naveDestruida:            #Si la nave fue destruida, perdiste!
 			MenuPerder()
 		pass
 

@@ -50,8 +50,7 @@ func _on_area_2d_area_entered(area):
 	
 	if area.is_in_group("powerUpLife"):
 		Global.vidas +=1
-		
-		#area.queue_free() #Elimina el power-up de vida
+		area.queue_free() #Elimina el power-up de vida
 	
 	#Si entra enemigo al area
 	if area.is_in_group("Enemigo"):
