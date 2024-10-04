@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://cv5y706nmnp34"]
+
+[ext_resource type="Script" path="res://Scripts/laserJefe.gd" id="1_y6rqu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aftpc"]
+
+[node name="LaserJefe" type="Node2D"]
+script = ExtResource("1_y6rqu")
+
+[node name="Reference" type="Sprite2D" parent="."]
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
+[node name="Line2D" type="Line2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="." groups=["Enemigo"]]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Area2D"]
+visible = false
+position = Vector2(0, 250)
+amount = 20
+lifetime = 0.1
+randomness = 0.7
+fixed_fps = 30
+draw_order = 1
+emission_shape = 3
+emission_rect_extents = Vector2(15, 250)
+angular_velocity_min = 200.0
+angular_velocity_max = 720.0
+scale_amount_min = 0.9
+scale_amount_max = 3.5
+color = Color(0, 1, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_aftpc")
+debug_color = Color(0.924944, 4.39915e-05, 0.678114, 0.42)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
