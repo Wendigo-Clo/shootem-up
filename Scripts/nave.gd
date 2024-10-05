@@ -6,7 +6,7 @@ var shot = true
 var pre_laser = preload("res://Scenes/laser.tscn")
 var pre_laser_2 = preload("res://Scenes/laser_2.tscn")
 var current_laser = pre_laser  # Inicializa con el primer tipo de láser
-var power_up_type = "laser_2"  # Define el tipo de power-up
+var agarroPowerUp = false  # Define el tipo de power-up
 
 func _ready():
 	$AnimationPlayer.play("inicioEscena")
@@ -37,15 +37,16 @@ func Shoot():
 		pass
 	pass
 
-func _on_power_up_collected(power_up_type: String):
-	if power_up_type == "laser_2":
+func _on_power_up_collected():
+	if agarroPowerUp:
 		current_laser = pre_laser_2  # Cambia al segundo tipo de láser
 
 
 func _on_area_2d_area_entered(area):
 	#Powerup Disparo
 	if area.is_in_group("power_up"):  
-		_on_power_up_collected(power_up_type) 
+		agarroPowerUp = true
+		_on_power_up_collected() 
 		area.queue_free()  # Elimina el power-up
 	
 	if area.is_in_group("powerUpLife"):
@@ -54,7 +55,7 @@ func _on_area_2d_area_entered(area):
 	
 	#Si entra enemigo al area
 	if area.is_in_group("Enemigo") or area.is_in_group("BalaJefe"):
-		Global.vidas -=1
+		Global.vidas -= 1
 		$AnimationPlayer.play("perderVidas")
 		
 	#Cuando las vidas llegan a 0

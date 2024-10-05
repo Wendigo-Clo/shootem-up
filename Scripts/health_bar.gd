@@ -1,5 +1,5 @@
 extends ProgressBar
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	self.position = Vector2(-6,634)

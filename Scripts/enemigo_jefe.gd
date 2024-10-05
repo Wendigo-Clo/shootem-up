@@ -50,7 +50,7 @@ func MoverNave():
 	$AnimationPlayer.play("Transparencia")
 	await $AnimationPlayer.animation_finished
 	$Sprite2D/Area2D/Danio.disabled = true
-	if $AnimationPlayer.animation_finished:
+	if position == posActual:
 		while position == posActual: #Para que no respita lugar
 			position = puntoAzar(randi_range(0,2))
 		pass
@@ -117,11 +117,12 @@ func recibir_dano(cantidad):
 		vida_actual = 0
 	actualizar_barra_vida()
 
-		
 #Si entra el laser (queda conectar
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("Laser"):
 		recibir_dano(1)
+		$AnimationPlayer2.play("reciboDanio")
+		area.visible = false
 		if (vida_actual<=0):
 			print("Ganaste!")
 			queue_free()

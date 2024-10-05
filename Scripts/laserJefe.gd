@@ -7,7 +7,7 @@ var widthy = based_width
 var shoot = false
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	$Line2D/Area2D/CPUParticles2D.visible = true
 	$RayCast2D.target_position = Vector2.DOWN * maxrange #El final del raycast, es igual a vector abajo * maxrange
 	

@@ -1,18 +1,32 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxhhkjwcak7st"]
+[gd_scene load_steps=13 format=3 uid="uid://bxhhkjwcak7st"]
 
 [ext_resource type="Texture2D" uid="uid://brdmrx0ykijsw" path="res://Assets/Imagenes/Personajes/ImagenJefe.png" id="1_0ru8p"]
 [ext_resource type="Script" path="res://Scripts/enemigo_jefe.gd" id="1_jifef"]
+[ext_resource type="Texture2D" uid="uid://nvrkhaxnpic8" path="res://Assets/Imagenes/Personajes/ImagenJefe_danio.png" id="3_ggpg0"]
 [ext_resource type="Script" path="res://Scripts/health_bar.gd" id="3_vjpm1"]
 
 [sub_resource type="Animation" id="Animation_21ubi"]
+resource_name = "RESET"
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/path = NodePath("Sprite2D:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_0ru8p")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -21,6 +35,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_4v8mr"]
 resource_name = "Transparencia"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -28,7 +43,7 @@ tracks/0/path = NodePath("Sprite2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.966667),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -38,6 +53,43 @@ tracks/0/keys = {
 _data = {
 "RESET": SubResource("Animation_21ubi"),
 "Transparencia": SubResource("Animation_4v8mr")
+}
+
+[sub_resource type="Animation" id="Animation_j7hra"]
+resource_name = "reciboDanio"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_0ru8p"), ExtResource("3_ggpg0"), ExtResource("1_0ru8p")]
+}
+
+[sub_resource type="Animation" id="Animation_rniew"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_0ru8p")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tjbm2"]
+_data = {
+"RESET": SubResource("Animation_rniew"),
+"reciboDanio": SubResource("Animation_j7hra")
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panvq"]
@@ -84,6 +136,11 @@ polygon = PackedVector2Array(-112, 3, -105, 13, -103.902, 23.4146, -87.3171, 23.
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_m84ku")
+}
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tjbm2")
 }
 
 [node name="paraHealthBar" type="CanvasLayer" parent="."]

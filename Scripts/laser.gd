@@ -12,7 +12,7 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 
 
 func _on_area_2d_area_entered(area):
-	if area.is_in_group("Rock"):
+	if area.is_in_group("Enemigo"):
 		$Sprite2D.visible = false
 		$Area2D/CollisionShape2D.queue_free()
 		await get_tree().create_timer (0.1).timeout
