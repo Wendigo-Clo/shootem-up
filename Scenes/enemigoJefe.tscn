@@ -57,7 +57,8 @@ bg_color = Color(0.737255, 0, 0, 1)
 skew = Vector2(-2.5, 0)
 
 [node name="EnemigoJefe" type="CharacterBody2D"]
-position = Vector2(550, 110)
+position = Vector2(550, 40)
+scale = Vector2(2.05, 2.05)
 script = ExtResource("1_jifef")
 metadata/_edit_group_ = true
 
@@ -78,7 +79,7 @@ position = Vector2(-95, 27)
 position = Vector2(0, 30)
 
 [node name="Danio" type="CollisionPolygon2D" parent="Sprite2D/Area2D"]
-polygon = PackedVector2Array(-112, 3, -105, 13, -103, 28, -91, 28, -85, 11, -44, 19, -22, 19, -13, 47, -8, 32, 9, 30, 24, 13, 71, 10, 79, 25, 91, 25, 97, 14, 92, 1, 116, -33, -104, -33)
+polygon = PackedVector2Array(-112, 3, -105, 13, -103.902, 23.4146, -87.3171, 23.4146, -85, 11, -44, 19, -22, 19, -13, 47, -8, 32, 9, 30, 24, 13, 71, 10, 76.5854, 20.4878, 95.6097, 20.9756, 97, 14, 92, 1, 98.5366, -19.5122, -104, -33)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -88,14 +89,14 @@ libraries = {
 [node name="paraHealthBar" type="CanvasLayer" parent="."]
 
 [node name="HealthBar" type="ProgressBar" parent="paraHealthBar"]
-offset_left = 800.0
-offset_top = 20.0
-offset_right = 1800.0
-offset_bottom = 47.0
-scale = Vector2(0.3, 0.3)
+offset_left = -6.0
+offset_top = 634.0
+offset_right = 994.0
+offset_bottom = 661.0
+scale = Vector2(1.2, 1.2)
 theme_override_styles/background = SubResource("StyleBoxFlat_panvq")
 theme_override_styles/fill = SubResource("StyleBoxFlat_lyvxp")
-step = 5.0
+step = 1.0
 value = 100.0
 show_percentage = false
 script = ExtResource("3_vjpm1")

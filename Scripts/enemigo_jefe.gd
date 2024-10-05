@@ -64,7 +64,7 @@ pass
 
 func puntoAzar(num: int):
 	match(num):
-		0: return Vector2(110, self.position.y)# Del lado Izq
+		0: return Vector2(200, self.position.y)# Del lado Izq 110
 		1: return Vector2(550, self.position.y) #centro
 		2: return Vector2(910, self.position.y)
 	
@@ -121,7 +121,7 @@ func recibir_dano(cantidad):
 #Si entra el laser (queda conectar
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("Laser"):
-		recibir_dano(5)
+		recibir_dano(1)
 		if (vida_actual<=0):
 			print("Ganaste!")
 			queue_free()

@@ -18,7 +18,7 @@ offset = Vector2(0, -460)
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 modulate = Color(0, 1, 0, 1)
 
-[node name="Area2D" type="Area2D" parent="." groups=["Enemigo"]]
+[node name="Area2D" type="Area2D" parent="." groups=["BalaJefe"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 9)

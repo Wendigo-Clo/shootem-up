@@ -53,7 +53,7 @@ func _on_area_2d_area_entered(area):
 		area.queue_free() #Elimina el power-up de vida
 	
 	#Si entra enemigo al area
-	if area.is_in_group("Enemigo"):
+	if area.is_in_group("Enemigo") or area.is_in_group("BalaJefe"):
 		Global.vidas -=1
 		$AnimationPlayer.play("perderVidas")
 		
