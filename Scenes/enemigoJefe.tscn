@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bxhhkjwcak7st"]
+[gd_scene load_steps=9 format=3 uid="uid://bxhhkjwcak7st"]
 
 [ext_resource type="Texture2D" uid="uid://brdmrx0ykijsw" path="res://Assets/Imagenes/Personajes/ImagenJefe.png" id="1_0ru8p"]
 [ext_resource type="Script" path="res://Scripts/enemigo_jefe.gd" id="1_jifef"]
-[ext_resource type="PackedScene" uid="uid://cv5y706nmnp34" path="res://Scenes/laserJefe.tscn" id="2_58t2a"]
 [ext_resource type="Script" path="res://Scripts/health_bar.gd" id="3_vjpm1"]
 
 [sub_resource type="Animation" id="Animation_21ubi"]
@@ -79,16 +78,12 @@ position = Vector2(-95, 27)
 position = Vector2(0, 30)
 
 [node name="Danio" type="CollisionPolygon2D" parent="Sprite2D/Area2D"]
-visible = false
 polygon = PackedVector2Array(-112, 3, -105, 13, -103, 28, -91, 28, -85, 11, -44, 19, -22, 19, -13, 47, -8, 32, 9, 30, 24, 13, 71, 10, 79, 25, 91, 25, 97, 14, 92, 1, 116, -33, -104, -33)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_m84ku")
 }
-
-[node name="LaserJefe" parent="." instance=ExtResource("2_58t2a")]
-visible = false
 
 [node name="paraHealthBar" type="CanvasLayer" parent="."]
 
@@ -100,7 +95,9 @@ offset_bottom = 47.0
 scale = Vector2(0.3, 0.3)
 theme_override_styles/background = SubResource("StyleBoxFlat_panvq")
 theme_override_styles/fill = SubResource("StyleBoxFlat_lyvxp")
-step = 10.0
+step = 5.0
 value = 100.0
 show_percentage = false
 script = ExtResource("3_vjpm1")
+
+[connection signal="area_entered" from="Sprite2D/Area2D" to="." method="_on_area_2d_area_entered"]

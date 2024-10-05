@@ -6,7 +6,7 @@ var puedoDisparar = true #Para que pare y no en cadecia
 var dispareRecien = false
 var cantDisp : int = 4 #Cantidad de balas
 var pre_bullet = preload("res://Scenes/bala_jefe.tscn")
-@onready  var rayo = $LaserJefe
+
 var atacando = false
 
 var vida_max = 100.0
@@ -72,15 +72,14 @@ func puntoAzar(num: int):
 
 func DisparoRayo():
 	atacando=true
-	rayo.visible = true
+	add_child(preload("res://Scenes/laserJefe.tscn").instantiate())
 	await get_tree().create_timer(4).timeout
-	rayo.visible = false
+	$LaserJefe.queue_free()
 	atacando=false
 	pass
 
 func Dispara():
 	atacando=true
-	puedoDisparar = false
 	for i in cantDisp:
 		#DisparaCentro()
 		Disparo()
@@ -88,7 +87,6 @@ func Dispara():
 		pass
 	atacando = false
 	pass
-	puedoDisparar=true
 
 func Disparo():
 	for direction in [Vector2(1, 1), Vector2(0, 1), Vector2(-1, 1)]: # (1, 1)DERECHA , (0,1)Centro, (-1, 1)IZQ
@@ -122,8 +120,8 @@ func recibir_dano(cantidad):
 		
 #Si entra el laser (queda conectar
 func _on_area_2d_area_entered(area):
-	if area.is_in_group("laser"):
-		recibir_dano(10)
+	if area.is_in_group("Laser"):
+		recibir_dano(5)
 		if (vida_actual<=0):
 			print("Ganaste!")
 			queue_free()

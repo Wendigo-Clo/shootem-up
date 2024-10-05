@@ -5,6 +5,7 @@
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_lpfom"]
 
 [node name="LaserJefe" type="Node2D"]
+position = Vector2(-8, 4)
 script = ExtResource("1_y6rqu")
 
 [node name="Reference" type="Sprite2D" parent="."]
@@ -15,10 +16,9 @@ script = ExtResource("1_y6rqu")
 points = PackedVector2Array(0, 0, 0, 0)
 default_color = Color(0, 1, 1, 1)
 
-[node name="Area2D" type="Area2D" parent="." groups=["Enemigo"]]
+[node name="Area2D" type="Area2D" parent="Line2D" groups=["Enemigo"]]
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Area2D"]
-visible = false
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Line2D/Area2D"]
 position = Vector2(0, 250)
 amount = 20
 lifetime = 0.1
@@ -33,8 +33,8 @@ scale_amount_min = 0.9
 scale_amount_max = 3.5
 color = Color(0, 1, 1, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Line2D/Area2D"]
 shape = SubResource("SegmentShape2D_lpfom")
 debug_color = Color(0.924944, 4.39915e-05, 0.678114, 0.42)
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Line2D/Area2D" to="." method="_on_area_2d_area_entered"]
