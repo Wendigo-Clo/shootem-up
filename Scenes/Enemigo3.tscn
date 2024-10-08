@@ -228,6 +228,7 @@ polygon = PackedVector2Array(-105, 2, -97, 9, -36, 18, -2, 36, 32, 19, 87, 12, 9
 
 [node name="Explosion" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_1xdon")
+volume_db = -4.0
 bus = &"SFX"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

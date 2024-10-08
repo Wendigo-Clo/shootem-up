@@ -3,32 +3,39 @@
 [ext_resource type="Script" path="res://Scripts/pausa_game_over.gd" id="1_0wcrc"]
 [ext_resource type="FontFile" uid="uid://c3l0xqydfr5do" path="res://Assets/Font/Nasa.ttf" id="2_y40ol"]
 
-[node name="Pausa-GameOver" type="Node2D"]
+[node name="Control" type="Control"]
 process_mode = 3
+z_index = 12
+texture_filter = 2
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1156.0
+offset_bottom = 648.0
 script = ExtResource("1_0wcrc")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+z_index = 10
 layout_direction = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 530.0
-offset_top = 325.0
-offset_right = 530.0
-offset_bottom = 325.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0.239216, 0.215686, 1)
+color = Color(0, 0.239216, 0.129412, 0)
 
 [node name="GameOver" type="Label" parent="ColorRect"]
-visible = false
-layout_mode = 0
-offset_left = -119.0
-offset_top = -155.0
-offset_right = 249.0
-offset_bottom = -55.0
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -224.5
+offset_top = -170.0
+offset_right = 224.5
+offset_bottom = -90.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 0)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
@@ -42,6 +49,33 @@ text = "GAME OVER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Points" type="Label" parent="ColorRect"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.342
+anchor_right = 0.5
+anchor_bottom = 0.443
+offset_left = -235.0
+offset_top = -0.300003
+offset_right = 247.0
+offset_bottom = 0.0499878
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 0)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/shadow_offset_x = -4
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("2_y40ol")
+theme_override_font_sizes/font_size = 40
+text = "Points:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
 layout_mode = 1
 anchors_preset = 8
@@ -49,9 +83,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = -10.0
-offset_right = 129.0
-offset_bottom = 60.0
+offset_left = -64.5
+offset_top = -35.0
+offset_right = 64.5
+offset_bottom = 35.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 6
@@ -63,7 +98,7 @@ process_mode = 3
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_y40ol")
 theme_override_font_sizes/font_size = 25
-text = "Continuar"
+text = "Play"
 
 [node name="ReJugar" type="Button" parent="ColorRect/VBoxContainer"]
 process_mode = 3
@@ -71,15 +106,14 @@ visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_y40ol")
 theme_override_font_sizes/font_size = 25
-text = "Reintentar"
+text = "Restart"
 
 [node name="Salir" type="Button" parent="ColorRect/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_y40ol")
 theme_override_font_sizes/font_size = 25
-text = "Salir
-"
+text = "Quit"
 
 [connection signal="pressed" from="ColorRect/VBoxContainer/Jugar" to="." method="_on_jugar_pressed"]
 [connection signal="pressed" from="ColorRect/VBoxContainer/ReJugar" to="." method="_on_re_jugar_pressed"]

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://qy5xa1xxdrj5"]
+
+[ext_resource type="AudioStream" uid="uid://c4oiamqntrmw6" path="res://Assets/Sonido/Stinger Win1.ogg" id="1_fi0yk"]
+
+[node name="sonido_Victoria" type="AudioStreamPlayer2D"]
+process_mode = 3
+stream = ExtResource("1_fi0yk")
+autoplay = true
+bus = &"Music"

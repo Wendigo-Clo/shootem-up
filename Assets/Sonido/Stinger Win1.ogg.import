@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c4oiamqntrmw6"
+path="res://.godot/imported/Stinger Win1.ogg-6d2af5d0f90b4b7085ab05c3c5640db8.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sonido/Stinger Win1.ogg"
+dest_files=["res://.godot/imported/Stinger Win1.ogg-6d2af5d0f90b4b7085ab05c3c5640db8.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -11,6 +11,7 @@ var agarroPowerUp = false  # Define el tipo de power-up
 func _ready():
 	$AnimationPlayer.play("inicioEscena")
 
+
 func _physics_process(_delta):
 	move()
 	Shoot()
@@ -29,8 +30,8 @@ func Shoot():
 	if Input.is_action_just_pressed("ui_accept") and shot and not Global.naveDestruida:
 		var laser = current_laser.instantiate()
 		get_parent().add_child(laser)
-		laser.position.x = position.x
-		laser.position.y = position.y - 50
+		laser.position.x = position.x -5
+		laser.position.y = position.y -80
 		shot = false
 		await get_tree().create_timer (0.1).timeout
 		shot = true
@@ -50,14 +51,16 @@ func _on_area_2d_area_entered(area):
 		area.queue_free()  # Elimina el power-up
 	
 	if area.is_in_group("powerUpLife"):
-		Global.vidas +=1
+		if Global.vidas <=5:
+			Global.vidas +=1
 		area.queue_free() #Elimina el power-up de vida
 	
 	#Si entra enemigo al area
 	if area.is_in_group("Enemigo") or area.is_in_group("BalaJefe"):
-		Global.vidas -= 1
-		$AnimationPlayer.play("perderVidas")
-		
+		if not Global.modoDios:
+			Global.vidas -= 1
+			$AnimationPlayer.play("perderVidas")
+		pass
 	#Cuando las vidas llegan a 0
 	if Global.vidas == 0:
 		$AnimationPlayer.play("Explosion")

@@ -1,33 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://bk2yfox4su8ig"]
+[gd_scene load_steps=4 format=3 uid="uid://bk2yfox4su8ig"]
 
 [ext_resource type="Script" path="res://Scripts/transition_control.gd" id="1_xxkw3"]
-
-[sub_resource type="Animation" id="Animation_l364i"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Transition:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Transition:size")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1152, 650)]
-}
 
 [sub_resource type="Animation" id="Animation_eknev"]
 resource_name = "screen_transition"
@@ -58,11 +31,13 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7cfp5"]
 _data = {
-"RESET": SubResource("Animation_l364i"),
 "screen_transition": SubResource("Animation_eknev")
 }
 
 [node name="TransitionControl" type="Control"]
+process_mode = 3
+z_index = 15
+texture_filter = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -73,6 +48,7 @@ grow_vertical = 2
 script = ExtResource("1_xxkw3")
 
 [node name="Transition" type="ColorRect" parent="."]
+z_index = 15
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0

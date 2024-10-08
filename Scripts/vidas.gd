@@ -46,14 +46,29 @@ func update_lives_visual() -> void:
 
 '''# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	if Global.vidas == 6:
+		for vida in get_children():
+			vida.show()
+	if Global.vidas == 5:
+		$Vida6.hide()
+		$Vida5.show()
+		$Vida4.show()
+	if Global.vidas == 4:
+		$Vida5.hide()
+		$Vida4.show()
+		$Vida3.show()
 	if Global.vidas == 3:
+		$Vida4.hide()
 		$Vida3.show()
 	if Global.vidas == 2:
 		$Vida3.hide()
 		$Vida2.show()
 	if Global.vidas == 1:
-		$Vida2.hide()
+		$Vida5.hide()
+		$Vida4.hide()
 		$Vida3.hide()
+		$Vida2.hide()
+		$Vida1.show()
 	if Global.vidas == 0:
 		$Vida1.hide()
 

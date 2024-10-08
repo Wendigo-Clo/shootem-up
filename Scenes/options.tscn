@@ -10,15 +10,18 @@
 [ext_resource type="AudioStream" uid="uid://badcej00r47xx" path="res://Assets/Sonido/Hover.ogg" id="7_xjdno"]
 
 [node name="Options" type="Control"]
+texture_filter = 2
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_right = 1.017
+anchor_bottom = 1.025
+offset_right = 0.415894
+offset_bottom = -0.200073
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_gxok1")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 2
 layout_mode = 0
 offset_right = 2344.0
 offset_bottom = 1330.0
@@ -34,6 +37,7 @@ bus = &"Music"
 parameters/looping = true
 
 [node name="Options" type="Label" parent="."]
+texture_filter = 2
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -64,67 +68,69 @@ vertical_alignment = 1
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.548
-anchor_right = 0.5
-anchor_bottom = 0.548
-offset_left = -156.0
-offset_top = -94.104
-offset_right = 157.0
-offset_bottom = 103.896
+anchor_left = 0.365
+anchor_top = 0.403
+anchor_right = 0.636
+anchor_bottom = 0.708
+offset_left = -0.480011
+offset_top = -0.144043
+offset_right = 0.327942
+offset_bottom = 0.215973
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+custom_minimum_size = Vector2(0, 150)
 layout_direction = 1
 layout_mode = 2
-size_flags_vertical = 4
+theme_override_constants/separation = 20
+alignment = 1
 
-[node name="SFX Volume" type="HSlider" parent="."]
-layout_mode = 0
-offset_left = 420.0
-offset_top = 400.0
-offset_right = 733.0
-offset_bottom = 435.0
-max_value = 1.0
-step = 0.001
-script = ExtResource("5_upvwk")
-bus_name = "SFX"
+[node name="Music Label" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("5_stev7")
+theme_override_font_sizes/font_size = 25
+text = "Music Volume"
+horizontal_alignment = 1
 
-[node name="Music Volume" type="HSlider" parent="."]
-layout_mode = 0
-offset_left = 420.0
-offset_top = 324.0
-offset_right = 733.0
-offset_bottom = 340.0
+[node name="Music Volume" type="HSlider" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
 max_value = 1.0
 step = 0.001
 script = ExtResource("5_upvwk")
 bus_name = "Music"
 
-[node name="SFX Label" type="Label" parent="."]
+[node name="SFX Label" type="Label" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-offset_left = 419.0
-offset_top = 364.0
-offset_right = 732.0
-offset_bottom = 388.0
 theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("5_stev7")
 theme_override_font_sizes/font_size = 25
 text = "SFX Volume"
 horizontal_alignment = 1
 
-[node name="Music Label" type="Label" parent="."]
+[node name="SFX Volume" type="HSlider" parent="PanelContainer/VBoxContainer"]
 layout_mode = 2
-offset_left = 421.0
-offset_top = 284.0
-offset_right = 734.0
-offset_bottom = 308.0
+max_value = 1.0
+step = 0.001
+script = ExtResource("5_upvwk")
+bus_name = "SFX"
+
+[node name="CheckButton" type="CheckButton" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
 theme_override_constants/outline_size = 7
+theme_override_constants/align_to_largest_stylebox = 0
 theme_override_fonts/font = ExtResource("5_stev7")
-theme_override_font_sizes/font_size = 25
-text = "Music Volume"
-horizontal_alignment = 1
+theme_override_font_sizes/font_size = 20
+text = "Developer mode"
+
+[node name="masDificultad" type="CheckButton" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 7
+theme_override_constants/align_to_largest_stylebox = 0
+theme_override_fonts/font = ExtResource("5_stev7")
+theme_override_font_sizes/font_size = 20
+text = "Developer mode"
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
@@ -152,9 +158,9 @@ bus = &"SFX"
 [node name="TransitionControl" parent="." instance=ExtResource("3_n4tsd")]
 visible = false
 layout_mode = 1
-offset_left = -23.0
-offset_right = 34.0
-offset_bottom = 22.0
+offset_bottom = 0.0
 
+[connection signal="toggled" from="PanelContainer/VBoxContainer/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="toggled" from="PanelContainer/VBoxContainer/masDificultad" to="." method="_on_mas_dificultad_toggled"]
 [connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

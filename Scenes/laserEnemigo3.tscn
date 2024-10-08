@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7ak3qrx6mwtb"]
+[gd_scene load_steps=5 format=3 uid="uid://b7ak3qrx6mwtb"]
 
 [ext_resource type="Script" path="res://Scripts/laserEnemigo3.gd" id="1_rpuxw"]
 [ext_resource type="Texture2D" uid="uid://btovvc76pcolr" path="res://Assets/Imagenes/Personajes/Green-Laser.png" id="2_ms50x"]
+[ext_resource type="AudioStream" uid="uid://hcxe4wug1ofd" path="res://Assets/Sonido/Laser.ogg" id="3_qfkkp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nsq66"]
 radius = 4.0
@@ -21,6 +22,14 @@ texture = ExtResource("2_ms50x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CapsuleShape2D_nsq66")
+
+[node name="Explosion" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_qfkkp")
+volume_db = -4.0
+pitch_scale = 2.5
+autoplay = true
+attenuation = 0.392292
+bus = &"SFX"
 
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

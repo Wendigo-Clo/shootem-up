@@ -1,17 +1,14 @@
 extends Node2D
 
 
-
 func _ready():
 	$Fondo.set_velocidad(1) #Que el fondo sea el del nivel 1, a su velocidad.
 	get_tree().paused = false
-	
-		#Transicion
 	ComienzoTransicion()
+	
 	#presentacion de nivel
 	PresentacionNivel()
-	
-	#Instancio la nave y los laterales
+	#Instancio la nave y los laterales 
 	add_child(preload("res://Scenes/nave.tscn").instantiate())
 	add_child(preload("res://Scenes/laterales.tscn").instantiate())
 	
@@ -20,8 +17,8 @@ func _ready():
 	add_child(preload("res://Scenes/score.tscn").instantiate())
 	
 	 #Pauso para presentacion
-	await get_tree().create_timer(5).timeout
-	
+	await get_tree().create_timer(7).timeout
+	$"Pausa-GameOver/ColorRect/Points".visible = false
 	#instancio el timer y le defino el cambio de escena
 	var NodoTiempo = preload("res://Scenes/nodo_timer.tscn").instantiate()
 	add_child(NodoTiempo)
@@ -46,8 +43,9 @@ func _process(_delta: float) -> void:
 		pass
 
 func MenuPerder(): #abre pantalla de perder, reinicia el score y habilita el rejugar
-	await get_tree().create_timer(0.5).timeout
 	get_tree().paused = true
+	await get_tree().create_timer(0.01).timeout
+	add_child(preload("res://Scenes/sonido_Muerte.tscn").instantiate())
 	Global.rejugar = true
 	Global.score = 0
 	$"Pausa-GameOver".visible = true
@@ -67,9 +65,11 @@ func ComienzoTransicion():
 	pass
 
 func PresentacionNivel():
+	await get_tree().create_timer(0.5).timeout
+	$"Pausa-GameOver"/ColorRect/GameOver.text = "LEVEL 1"
+	$"Pausa-GameOver/ColorRect/Points".text = "press ESC to pause || press SPACE to shoot"
 	$"Pausa-GameOver".visible = true
-	$"Pausa-GameOver"/ColorRect/GameOver.text = "NIVEL 1"
-	$"Pausa-GameOver"/ColorRect/GameOver.visible = true
+	$"Pausa-GameOver/ColorRect/Points".visible = true
 	$"Pausa-GameOver"/ColorRect/VBoxContainer.visible = false
 pass
 
@@ -77,7 +77,6 @@ pass
 func _on_pausa_game_over_jugar() -> void: #funcion jugar de boton
 	get_tree().paused = false
 	$"Pausa-GameOver".visible = false
-	$"Pausa-GameOver"/ColorRect/GameOver.text = "PAUSA!"
 	pass # Replace with function body.
 
 
@@ -90,5 +89,11 @@ func _on_pausa_game_over_rejugar() -> void: #funcion re jugar
 	pass # Replace with function body.
 
 func _on_pausa_game_over_salir() -> void:
+	get_tree().paused=false
+	if not Global.naveDestruida:
+		$"Nave/Area2D/CollisionPolygon2D".disabled = true #Para que no cause problemas
+	add_child(preload("res://Scenes/transition_control.tscn").instantiate())
+	$"TransitionControl/AnimationPlayer".play_backwards("screen_transition")
+	await $"TransitionControl/AnimationPlayer".animation_finished
 	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
 	pass # Replace with function body.

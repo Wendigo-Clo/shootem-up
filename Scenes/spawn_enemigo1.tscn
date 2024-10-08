@@ -3,5 +3,5 @@
 [ext_resource type="Script" path="res://Scripts/spawnEnemigo1.gd" id="1_nb8yj"]
 
 [node name="SpawnEnemigo1" type="Marker2D"]
-position = Vector2(50, -30)
+position = Vector2(50, -70)
 script = ExtResource("1_nb8yj")

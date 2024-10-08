@@ -12,6 +12,7 @@ func _on_play_pressed() -> void:
 	$TransitionControl.visible = true
 	$TransitionControl/AnimationPlayer.play_backwards("screen_transition")
 	await $TransitionControl/AnimationPlayer.animation_finished
+	Global.reset()
 	get_tree().change_scene_to_file("res://Scenes/Nivel1.tscn")
 	$TransitionControl.visible = false
 	pass 
@@ -30,7 +31,7 @@ func _on_credits_pressed() -> void:
 	$TransitionControl.visible = true
 	$TransitionControl/AnimationPlayer.play_backwards("screen_transition")
 	await $TransitionControl/AnimationPlayer.animation_finished
-	get_tree().change_scene_to_file("res://Scenes/creditos.tscn")
+	get_tree().change_scene_to_file("res://Scenes/credito.tscn")
 	pass 
 
 

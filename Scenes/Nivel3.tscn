@@ -18,8 +18,9 @@ texture = ExtResource("4_me3y7")
 
 [node name="MusicaNivel3" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_hsoif")
-volume_db = 6.0
+volume_db = 5.0
 autoplay = true
+bus = &"Music"
 
 [connection signal="jugar" from="Pausa-GameOver" to="." method="_on_pausa_game_over_jugar"]
 [connection signal="rejugar" from="Pausa-GameOver" to="." method="_on_pausa_game_over_rejugar"]

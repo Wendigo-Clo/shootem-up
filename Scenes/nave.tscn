@@ -391,6 +391,7 @@ _data = {
 }
 
 [node name="Nave" type="CharacterBody2D" groups=["nave"]]
+texture_filter = 2
 position = Vector2(580, 737)
 rotation = -0.0872665
 script = ExtResource("1_ll5c8")

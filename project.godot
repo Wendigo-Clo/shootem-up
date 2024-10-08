@@ -13,12 +13,19 @@ config_version=5
 config/name="ShootemUp"
 run/main_scene="res://Scenes/splashScreen.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
+boot_splash/show_image=false
 boot_splash/image="res://Assets/Imagenes/Stone Logo/Stone.png"
 config/icon="res://icon.svg"
 
 [autoload]
 
 Global="*res://Scripts/global.gd"
+
+[display]
+
+window/size/mode=2
+window/size/resizable=false
+window/stretch/mode="viewport"
 
 [input]
 
@@ -36,3 +43,5 @@ Pause={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/default_filters/use_nearest_mipmap_filter=true
+2d/snap/snap_2d_transforms_to_pixel=true

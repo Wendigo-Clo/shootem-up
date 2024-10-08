@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ci1ionb3mm03t"
+path="res://.godot/imported/Boss Loop-01.ogg-578c4484890b6a5bed97456cbc02641a.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Sonido/Boss Loop-01.ogg"
+dest_files=["res://.godot/imported/Boss Loop-01.ogg-578c4484890b6a5bed97456cbc02641a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

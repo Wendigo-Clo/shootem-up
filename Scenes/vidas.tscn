@@ -4,19 +4,39 @@
 [ext_resource type="Texture2D" uid="uid://dmjegpj5srg7j" path="res://Assets/Imagenes/Personajes/lives.png" id="2_g8vle"]
 
 [node name="Vidas" type="Node2D"]
+z_index = 6
+texture_filter = 2
 script = ExtResource("1_1nb4c")
 
 [node name="Vida1" type="Sprite2D" parent="."]
-position = Vector2(75, 100)
+position = Vector2(47.75, 100)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_g8vle")
 
 [node name="Vida2" type="Sprite2D" parent="."]
-position = Vector2(110, 100)
+position = Vector2(82.75, 100)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_g8vle")
 
 [node name="Vida3" type="Sprite2D" parent="."]
-position = Vector2(145, 100)
+position = Vector2(117.75, 100)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_g8vle")
+
+[node name="Vida4" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(152.75, 100)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_g8vle")
+
+[node name="Vida5" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(187.75, 100)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_g8vle")
+
+[node name="Vida6" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(222.75, 100)
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("2_g8vle")

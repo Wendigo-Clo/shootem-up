@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://cmo6pioudejln" path="res://Assets/Sonido/pwr_up1.ogg" id="3_qovse"]
 
 [node name="PowerUpLife" type="Node2D" groups=["powerUpLife"]]
+texture_filter = 2
 script = ExtResource("1_exlkd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

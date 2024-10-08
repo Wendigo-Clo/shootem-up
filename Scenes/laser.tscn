@@ -9,6 +9,7 @@ radius = 2.0
 height = 25.0
 
 [node name="Laser" type="CharacterBody2D"]
+texture_filter = 2
 script = ExtResource("1_bv0vl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -11,15 +11,15 @@ pass
 
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("Laser") or area.is_in_group("nave"):
-		Global.score += 100
+		if area.is_in_group("Laser"):
+			Global.score += 100
 		mass = 0.1
+		$Area2D/CollisionShape2D.queue_free()
 		$AnimationPlayer.play("Explotion")
 		$Explosion.play()
-		await get_tree().create_timer(1).timeout
-		$Area2D/CollisionShape2D.disabled = true	
+		await $Explosion.finished
 		queue_free()
 	pass # Replace with function body.
-
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()

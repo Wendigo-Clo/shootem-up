@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dq7f6qs8a7tf2"]
+
+[ext_resource type="AudioStream" uid="uid://rchn8y774w0a" path="res://Assets/Sonido/Stinger_Death.ogg" id="1_wys81"]
+
+[node name="Muerte_musica" type="AudioStreamPlayer2D"]
+process_mode = 3
+stream = ExtResource("1_wys81")
+volume_db = -8.0
+autoplay = true
+bus = &"Music"

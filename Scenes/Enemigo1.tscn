@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://kjlbo7jmtdne" path="res://Assets/Imagenes/Personajes/Explosion.png" id="3_vmphb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_35pli"]
+radius = 16.6196
 
 [sub_resource type="Animation" id="Animation_58nxt"]
 resource_name = "Explotion"
@@ -98,7 +99,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.3, 0.3)]
+"values": [Vector2(0.45, 0.45)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -201,7 +202,7 @@ scale = Vector2(0.2, 1.1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, -0.5)
-scale = Vector2(3.07, 3.07)
+scale = Vector2(3.5, 3.5)
 shape = SubResource("CircleShape2D_35pli")
 
 [node name="Explosion" type="AudioStreamPlayer2D" parent="."]

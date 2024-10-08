@@ -25,7 +25,8 @@ pass
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Laser") or area.is_in_group("nave"):
-		Global.score += 300
+		if area.is_in_group("Laser"):
+			Global.score += 100
 		$AnimationPlayer.play("Explosion")
 		$Explosion.play()
 		await get_tree().create_timer(1).timeout

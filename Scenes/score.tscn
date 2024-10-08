@@ -6,6 +6,7 @@
 [node name="Score" type="Node"]
 
 [node name="ScoreLabel" type="Label" parent="."]
+texture_filter = 2
 offset_left = 40.0
 offset_top = 25.0
 offset_right = 92.0

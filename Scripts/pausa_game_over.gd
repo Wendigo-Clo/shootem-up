@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 
 
 signal jugar
@@ -14,15 +14,21 @@ func _on_re_jugar_pressed() -> void:
 pass # Replace with function body.
 
 func _on_salir_pressed():
-	get_tree().quit()
+	emit_signal("salir")
 	pass
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Pause"):
-		$ColorRect/GameOver.text = "Pausa!"
+		
+		$ColorRect/GameOver.text = "PAUSE!"
 		$ColorRect/GameOver.visible = true
 		$ColorRect/VBoxContainer.visible=true
 		get_tree().paused = not get_tree().paused
 		visible = get_tree().paused
 		Global.menuPausa = get_tree().paused
+		if get_tree().paused:
+				#que no se vea el mouse
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 pass

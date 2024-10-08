@@ -8,12 +8,17 @@
 [node name="Nivel1" type="Node2D"]
 script = ExtResource("1_fouim")
 
-[node name="Pausa-GameOver" parent="." instance=ExtResource("4_53gj0")]
-
 [node name="Fondo" parent="." instance=ExtResource("3_nhl7c")]
+
+[node name="Pausa-GameOver" parent="." instance=ExtResource("4_53gj0")]
+visible = false
+z_index = 10
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="Musica" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_ra22i")
+volume_db = 4.0
 autoplay = true
 bus = &"Music"
 

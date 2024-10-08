@@ -2,7 +2,6 @@ extends Node2D
 
 func _ready():
 	$Fondo.set_velocidad(2) #Que el fondo sea el del nivel 12, a su velocidad.
-	
 	get_tree().paused = false
 	#Transicion
 	ComienzoTransicion()
@@ -43,8 +42,9 @@ func _process(_delta: float) -> void:
 		pass
 
 func MenuPerder(): #abre pantalla de perder, reinicia el score y habilita el rejugar
-	await get_tree().create_timer(0.5).timeout
 	get_tree().paused = true
+	await get_tree().create_timer(0.01).timeout
+	add_child(preload("res://Scenes/sonido_Muerte.tscn").instantiate())
 	Global.rejugar = true
 	Global.score = 0
 	$"Pausa-GameOver".visible = true
@@ -58,13 +58,14 @@ pass
 
 
 func PresentacionNivel():
+	await get_tree().create_timer(0.4).timeout
+	$"Pausa-GameOver"/ColorRect/GameOver.text = "LEVEL 2"
 	$"Pausa-GameOver".visible = true
-	$"Pausa-GameOver"/ColorRect/GameOver.text = "NIVEL 2"
 	$"Pausa-GameOver"/ColorRect/GameOver.visible = true
 	$"Pausa-GameOver"/ColorRect/VBoxContainer.visible = false
 
 func ComienzoTransicion():
-	add_child(preload("res://Scenes/transition_control.tscn").instantiate())
+	add_child(load("res://Scenes/transition_control.tscn").instantiate())
 	$TransitionControl/AnimationPlayer.play("screen_transition")
 	await $TransitionControl/AnimationPlayer.animation_finished
 	$"TransitionControl".queue_free()
@@ -82,9 +83,14 @@ func _on_pausa_game_over_rejugar() -> void: #funcion re jugar
 	Global.score = 0
 	Global.vidas = 3
 	Global.naveDestruida = false
-	#Global.rejugar = false   #Si dejo esta linea, va a volver a abrir el menu al comienzo.
 	pass # Replace with function body.
 
 func _on_pausa_game_over_salir() -> void:
+	get_tree().paused=false
+	if not Global.naveDestruida:
+		$"Nave/Area2D/CollisionPolygon2D".disabled = true #Para que no cause problemas
+	add_child(preload("res://Scenes/transition_control.tscn").instantiate())
+	$"TransitionControl/AnimationPlayer".play_backwards("screen_transition")
+	await $"TransitionControl/AnimationPlayer".animation_finished
 	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
 	pass # Replace with function body.

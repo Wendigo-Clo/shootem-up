@@ -1,5 +1,4 @@
 extends CharacterBody2D
-#Agregar al ready el mover
 
 var speed = 5 #velocidad de las balas
 var puedoDisparar = true #Para que pare y no en cadecia
@@ -17,16 +16,22 @@ var Cooldown = 1.0  # Tiempo en segundos entre ataques
 var TiempoUltimoAtaque = 0.0
 var ultimoAtaque=-1  #esto metido dentro de while mientras sea igual al anteior
 var posActual = self.position
+var comienzoAtaque = false
 
-
+signal Vencido
 
 func _ready() -> void:
+	$AnimationPlayer.play("Presentacion")
+	await $AnimationPlayer.animation_finished
+	$Presentacion.queue_free()
+	$MusicaJefe.play()
+	comienzoAtaque=true
 	actualizar_barra_vida()
 	pass
 
 	
 func _process(delta: float) -> void:
-	if (vida_actual>0):
+	if (vida_actual>0 and comienzoAtaque):
 		TiempoUltimoAtaque += delta  # Acumular el tiempo transcurrido
 		if TiempoUltimoAtaque >= Cooldown and not atacando and not Global.naveDestruida:
 			randomAttack = randi_range(0, 2)
@@ -121,9 +126,32 @@ func recibir_dano(cantidad):
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("Laser"):
 		recibir_dano(1)
+		$Impacto.play()
 		$AnimationPlayer2.play("reciboDanio")
 		area.visible = false
 		if (vida_actual<=0):
-			print("Ganaste!")
-			queue_free()
+			ExplosionesMuerte()
 	pass # Replace with function body.
+
+
+func ExplosionesMuerte():
+	if atacando:
+		await not atacando
+	$AnimationPlayer2.play("Explosion")
+	# Instanciar varias explosiones en diferentes posiciones
+	for i in range(4): # Por ejemplo, 3 explosiones
+		await get_tree().create_timer(0.6).timeout
+		var explosion = preload("res://Scenes/explosion_jefe.tscn").instantiate()
+		add_child(explosion)
+		explosion.global_position = get_random_position()
+	$AnimationPlayer.play("Transparencia")
+	await $AnimationPlayer.animation_finished
+	var explosion = preload("res://Scenes/explosion_jefe.tscn").instantiate()
+	add_child(explosion)
+	explosion.global_position = $Sprite2D/Area2D/FuenteLaser.global_position
+	await get_tree().create_timer(2.2).timeout
+	emit_signal("Vencido")
+	queue_free()
+
+func get_random_position() -> Vector2:
+	return Vector2(randf_range(position.x -270, position.x + 270), randf_range(0, 20))

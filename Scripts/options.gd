@@ -29,3 +29,20 @@ func _on_button_pressed() -> void:
 func _on_button_mouse_entered() -> void:
 	$Hover.play()
 	pass # Replace with function body.
+
+
+func _on_check_button_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		Global.modoDios = true
+	elif not toggled_on:
+		Global.modoDios = false
+	pass # Replace with function body.
+
+
+func _on_mas_dificultad_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		Global.maxDificultadJefe = true
+	elif not toggled_on:
+		Global.maxDificultadJefe = false
+	pass
+	pass # Replace with function body.
