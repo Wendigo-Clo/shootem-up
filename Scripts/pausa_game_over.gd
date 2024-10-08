@@ -26,9 +26,4 @@ func _input(event: InputEvent) -> void:
 		get_tree().paused = not get_tree().paused
 		visible = get_tree().paused
 		Global.menuPausa = get_tree().paused
-		if get_tree().paused:
-				#que no se vea el mouse
-			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		else:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 pass
