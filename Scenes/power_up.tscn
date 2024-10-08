@@ -44,8 +44,8 @@ bus = &"SFX"
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2(0, 8.33333)
 amount = 40
-lifetime = 0.1
-speed_scale = 0.1
+lifetime = 0.2
+speed_scale = 0.3
 emission_shape = 3
 emission_rect_extents = Vector2(8, 12)
 gravity = Vector2(0, -980)

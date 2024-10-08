@@ -21,5 +21,4 @@ func reset(): #reseteo para volver a iniciar (menos modoDios
 	score = 0 
 	vidas = 3
 	menuPausa = false
-	maxDificultadJefe = false
 pass

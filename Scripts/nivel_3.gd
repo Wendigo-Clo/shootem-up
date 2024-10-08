@@ -31,7 +31,7 @@ func _ready():
 	NodoTiempo.nivel3 = true
 	add_child(NodoTiempo)
 	NodoTiempo.connect("terminoTiempo", Callable(self, "_on_time_finish"))
-	# function "calleable()" not found in base self
+
 	#que no se vea el menu
 	$"Pausa-GameOver".visible = false
 		
@@ -66,21 +66,19 @@ pass
 
 
 func MenuPerderGanar(): #abre pantalla de perder, reinicia el score y habilita el rejugar
-	await get_tree().create_timer(0.5).timeout
 	get_tree().paused = true
 	$"Pausa-GameOver".visible = true
 	if Global.naveDestruida:
-		await get_tree().create_timer(0.01).timeout
-		add_child(preload("res://Scenes/sonido_Muerte.tscn").instantiate())
-		Global.rejugar = true
-		Global.score = 0
+		await get_tree().create_timer(0.1).timeout
+		var sonidoMuerte = preload("res://Scenes/sonido_Muerte.tscn").instantiate()
+		add_child(sonidoMuerte)
 		$"Pausa-GameOver"/ColorRect/GameOver.visible = true
 		$"Pausa-GameOver"/ColorRect/GameOver.text = "GAME OVER"
 		$"Pausa-GameOver/ColorRect/VBoxContainer".visible = true
 		$"Pausa-GameOver"/ColorRect/VBoxContainer/Jugar.visible = false
 		$"Pausa-GameOver/ColorRect/VBoxContainer/ReJugar".visible = true
 	else:
-		await get_tree().create_timer(0.01).timeout
+		await get_tree().create_timer(0.1).timeout
 		add_child(preload("res://Scenes/sonido_victoria.tscn").instantiate())
 		$"Pausa-GameOver"/ColorRect/GameOver.visible = true
 		$"Pausa-GameOver"/ColorRect/GameOver.text = "YOU ROCK!"
@@ -107,7 +105,7 @@ func ComienzoTransicion():
 	$"TransitionControl".queue_free()
 pass
 
-func _on_time_finish():
+func _on_time_finish(): #Cuando termine el primer tiempo:
 	$"SpawnEnemigo1".queue_free()
 	$"SpawnEnemigo2".queue_free()
 	$"SpawnEnemigo3".queue_free()
@@ -148,10 +146,8 @@ pass # Replace with function body.
 
 
 func _on_pausa_game_over_rejugar() -> void: #funcion re jugar
+	Global.reset()
 	get_tree().reload_current_scene()
-	Global.score = 0
-	Global.vidas = 3
-	Global.naveDestruida = false
 	pass # Replace with function body.
 
 func _on_pausa_game_over_salir() -> void:

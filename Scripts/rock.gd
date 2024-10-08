@@ -5,7 +5,7 @@ func _ready():
 	pass
 	
 func _physics_process(_delta: float) -> void:
-	gravity_scale = 0.1 
+	gravity_scale = 0.3
 	rotation_degrees -= 2
 pass
 

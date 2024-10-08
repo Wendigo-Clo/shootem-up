@@ -26,7 +26,6 @@ func _ready():
 
 	#que no se vea el menu y instancio el score en 0
 	$"Pausa-GameOver".visible = false # es tambien el que dice "nivel X"
-	Global.score = 0
 	
 	#Instancio spawns de powerup
 	add_child(preload("res://Scenes/spawn_pwr.tscn").instantiate())
@@ -67,7 +66,7 @@ func ComienzoTransicion():
 func PresentacionNivel():
 	await get_tree().create_timer(0.5).timeout
 	$"Pausa-GameOver"/ColorRect/GameOver.text = "LEVEL 1"
-	$"Pausa-GameOver/ColorRect/Points".text = "press ESC to pause || press SPACE to shoot"
+	$"Pausa-GameOver/ColorRect/Points".text = "press ESC to pause - press SPACE to shoot"
 	$"Pausa-GameOver".visible = true
 	$"Pausa-GameOver/ColorRect/Points".visible = true
 	$"Pausa-GameOver"/ColorRect/VBoxContainer.visible = false
@@ -81,10 +80,7 @@ func _on_pausa_game_over_jugar() -> void: #funcion jugar de boton
 
 
 func _on_pausa_game_over_rejugar() -> void: #funcion re jugar
-	Global.naveDestruida = false
-	Global.rejugar = false
-	Global.score = 0
-	Global.vidas = 3
+	Global.reset()
 	get_tree().reload_current_scene()
 	pass # Replace with function body.
 

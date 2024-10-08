@@ -12,6 +12,6 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		$AudioStreamPlayer2D.play()
 		await get_tree().create_timer(0.2).timeout
 		$Sprite2D.visible = false
-		await get_tree().create_timer(3).timeout 
+		await get_tree().create_timer(5).timeout 
 		queue_free()
 	pass 
