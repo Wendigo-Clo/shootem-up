@@ -8,6 +8,7 @@
   Desarrollo de videojuego Shoot'Em Up - SPACE SHIP
 </p>
 <h3>Link a Itch.io</h3>
+https://wendigo-hallucinated.itch.io/space-dementia
 <p><a> </a></p>
 
 <h3> El videojuego debe contener: </h3>
