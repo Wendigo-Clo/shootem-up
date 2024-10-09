@@ -125,19 +125,20 @@ func EjecutarJefe():
 pass
 
 func _ballataTerminada():
+	Global.modoDios = true
 	$"SpawnEnemigo3".queue_free()
 	if Global.maxDificultadJefe:
 		$"SpawnEnemigo2".queue_free()
-	await get_tree().create_timer(0.5).timeout
-	MenuPerderGanar()
 	batallaGanada = true
 	Global.score += 5000
+	MenuPerderGanar()
 
 func _on_pausa_game_over_jugar() -> void: #funcion jugar de boton
 	if not batallaGanada:
 		get_tree().paused = false
 		$"Pausa-GameOver".visible = false
 	else:
+		Global.modoDios = false
 		add_child(preload("res://Scenes/transition_control.tscn").instantiate())
 		$"TransitionControl/AnimationPlayer".play_backwards("screen_transition")
 		await $"TransitionControl/AnimationPlayer".animation_finished
